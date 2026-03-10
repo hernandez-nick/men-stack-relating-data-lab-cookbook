@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Pantry</title>
+</head>
+
+<%- include('./partials/_navbar.ejs') %>
+
+<body>
+    <h1>Welcome to my Pantry</h1>
+
+    <% if (pantry.length > 0) { %>
+        <ul>
+            <% pantry.forEach(item => { %>
+                <li><%= item.name %> - Quantity: <%= item.quantity %> - Expiration Date: <%= item.expirationDate.toDateString() %></li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>There are no items in this pantry.</p>
+    <% } %>
+
+</body>
+
+<a href="/users/<%= user._id %>/foods/new">Add New Item</a>
+
+</html>
