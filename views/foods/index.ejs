@@ -17,10 +17,17 @@
             <% pantry.forEach(item => { %>
                 <li><%= item.name %> - Quantity: <%= item.quantity %> - Expiration Date: <%= item.expirationDate.toDateString() %></li>
             <% }) %>
+            <form method="POST" action="/foods/<%= item._id %>?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form>
         </ul>
     <% } else { %>
         <p>There are no items in this pantry.</p>
     <% } %>
+
+<form method="POST" action="/foods/<%= item._id %>?_method=DELETE">
+    <button type="submit">Delete</button>
+</form>
 
 </body>
 
