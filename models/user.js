@@ -1,4 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+
+const foodSchema = new mongoose.Schema({
+  name: String,
+  quantity: Number,
+  expirationDate: Date,
+});
 
 const userSchema = mongoose.Schema({
   username: {
@@ -9,27 +15,9 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  pantry: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Pantry',
-  }
+  pantry: [foodSchema],
 });
 
-const User = mongoose.model('User', userSchema);
-
-const foodSchema = new mongoose.Schema({
-  name: String,
-  quantity: Number,
-  expirationDate: Date,
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-  },
-});
-
-const Food = mongoose.model('Food', foodSchema);
-
-
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-module.exports = Food;
